@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ivvysoft.tc.Ingredient;
 import com.ivvysoft.tc.Ingredient.Type;
-import com.ivvysoft.tc.Order;
 import com.ivvysoft.tc.Taco;
 
 import lombok.extern.slf4j.Slf4j;
@@ -42,10 +41,12 @@ public class DesignTacoController {
 	private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
 		return ingredients.stream().filter(x -> x.getType().equals(type)).collect(Collectors.toList());
 	}
-
+	
 	@PostMapping
-	public String processOrder(Order order) {
-		log.info("Order submitted: " + order);
-		return "redirect:/";
+	public String processDesign(Taco taco) {
+	 log.info("Processing design: " + taco);
+	 return "redirect:/orders/current";
 	}
+
+	
 }
